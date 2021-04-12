@@ -64,11 +64,12 @@ jan_mw <- sum(filter1$"power_actual (MW)")
 jan_mw
 
 
-filter1$Day
-plot <- ggplot(filter1, aes(x = as.factor(Day), y = "power_actual (MW)")) + 
+
+str(filter1$Day)
+theme_set(theme_bw())  # pre-set the bw theme.
+plot <- ggplot(filter1, aes(x = as.factor(filter1$Day), y = filter1$"power_actual (MW)")) + 
   geom_bar(stat = 'identity') + 
-  labs(title = "Power (MW) produced per day", x = "Day", y = "Power (MW)")
-
-
+  labs(title = "Power (MW) produced per day", x = "Day", y = "Power (MW)") + 
+  scale_y_continuous(breaks = seq(0,100,5))
 plot
 
