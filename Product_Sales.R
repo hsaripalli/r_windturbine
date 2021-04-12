@@ -15,7 +15,14 @@ str(sales)
 summary(sales)
 
 
-sales$Price_num <- as.numeric(str_remove(sales$Price, "\\$"))
+#Remove $ from Price and convert to numeric, check structure of Price column
+sales$Price <- as.numeric(str_remove(sales$Price, "\\$"))
+str(sales$Price)
 
-str(sales$Price_num)
 
+#Convert product_id to char of length 3
+sales$Product_ID <-str_pad(as.character(sales$Product_ID),3)
+str(sales$Product_ID)
+nchar(sales$Product_ID)
+
+str(sales)
